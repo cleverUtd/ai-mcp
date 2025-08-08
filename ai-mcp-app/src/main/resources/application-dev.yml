@@ -1,0 +1,29 @@
+server:
+  port: 8090
+  tomcat:
+    keep-alive-timeout: 600000
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL}
+    type: com.zaxxer.hikari.HikariDataSource
+  ai:
+    openai:
+      base-url: ${SPRING_AI_OPENAI_BASE_URL}
+      api-key: ${SPRING_AI_OPENAI_API_KEY}
+      embedding:
+        options:
+          model: ${SPRING_AI_OPENAI_EMBEDDING_MODEL}
+          dimensions: ${SPRING_AI_OPENAI_EMBEDDING_DIMENSIONS}
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: ${SPRING_AI_VECTORSTORE_PGVECTOR_DIMENSIONS}
+
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring.xml
