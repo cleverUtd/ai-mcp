@@ -11,6 +11,11 @@ spring:
     url: ${SPRING_DATASOURCE_URL}
     type: com.zaxxer.hikari.HikariDataSource
   ai:
+    mcp:
+      client:
+        request-timeout: 360s
+        stdio:
+          servers-configuration: classpath:/config/mcp-servers-config.json
     openai:
       base-url: ${SPRING_AI_OPENAI_BASE_URL}
       api-key: ${SPRING_AI_OPENAI_API_KEY}
